@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+
+metadata:
+  name: debug-demo
+  namespace: lab-debug
+  labels:
+    name: debug-demo
+
+spec:
+  replicas: 1
+
+  selector:
+    matchLabels:
+      name: debug-demo
+
+  template:
+    metadata:
+      labels:
+        name: debug-demo
+
+    spec:
+      containers:
+        - name: nginx
+          image: nginx:stable
+
+          ports:
+            - name: http
+              containerPort: 80
+
